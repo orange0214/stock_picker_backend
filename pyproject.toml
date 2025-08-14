@@ -8,10 +8,17 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "fastapi>=0.112",
+    "uvicorn[standard]>=0.30",
+    "pydantic-settings>=2.4",
 ]
 
 [tool.poetry]
 packages = [{include = "stock_picker", from = "src"}]
+
+[tool.poetry.scripts]
+dev = "stock_picker.app.__main__:main"
+
 
 
 [build-system]
