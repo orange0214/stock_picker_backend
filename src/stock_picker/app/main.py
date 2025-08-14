@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from .core.config import get_settings
+from .db import init_db
 from .core.logging import setup_logging
 from .api.router import api_router
 
@@ -32,3 +33,8 @@ def read_root() -> dict[str, str]:
 
 # Mount API
 app.include_router(api_router, prefix=settings.api_v1_prefix)
+
+
+@app.on_event("startup")
+def on_startup() -> None:
+    init_db()

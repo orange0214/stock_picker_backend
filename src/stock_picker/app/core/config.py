@@ -18,6 +18,9 @@ class Settings(BaseSettings):
     # Security
     secret_key: str = "change-me"
 
+    # Database
+    database_url: str = "sqlite:///./data/app.db"
+
 
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:
